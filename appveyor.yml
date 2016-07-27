@@ -10,10 +10,10 @@ nuget:
   disable_publish_on_pr: true
 build_script:  
 - build.cmd --quiet verify
-- ps: >-
-    $wc = New-Object 'System.Net.WebClient'
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\test\DotArchaius.Tests\TestResult.xml))
-test: off  
+test_script:
+- ps: |
+    $testResultsFile = "$ENV:APPVEYOR_BUILD_FOLDER\test\DotArchaius.Tests\TestResult.xml"
+    (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
 artifacts:  
 - path: .\artifacts\build\*.nupkg
   name: NuGet
