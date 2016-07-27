@@ -67,6 +67,27 @@ namespace DotArchaius.Tests
         }
     }
 
+    [TestFixture]
+    public class DynamicPropertyWithInMemoryPropertySupportTest : BaseTest
+    {
+        public InMemoryDynamicPropertySupport Dictionary { get; private set; }
+
+        protected override void Setup()
+        {
+            Dictionary = new InMemoryDynamicPropertySupport();
+            DynamicProperty.RegisterWithDynamicPropertySupport(Dictionary);
+
+            base.Setup();
+        }
+
+        protected override void Teardown()
+        {
+            DynamicProperty.Reset();
+
+            base.Teardown();
+        }
+    }
+
     public class DynamicPropertySupport : IDynamicPropertySupport
     {
         public Dictionary<string, string> Dictionary { get; set; }
