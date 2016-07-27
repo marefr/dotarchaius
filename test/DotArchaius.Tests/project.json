@@ -3,7 +3,8 @@
   "authors": [ "Marcus Efraimsson" ],
   "title": "DotArchaius Tests",
   "name": "DotArchaius.Tests",
-  "version": "1.0.0-*",
+  "version": "0.1.0-beta-*",
+  
   "buildOptions": {
     "preserveCompilationContext": true,
     "warningsAsErrors": true,
@@ -12,7 +13,7 @@
 
   "dependencies": {
     "DotArchaius": {
-      "version": "1.0.0-*",
+      "version": "0.1.0-*",
       "target": "project"
     },
     "dotnet-test-nunit": "3.4.0-beta-1",

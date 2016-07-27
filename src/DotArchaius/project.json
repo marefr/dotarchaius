@@ -3,7 +3,12 @@
   "authors": [ "Marcus Efraimsson" ],
   "title": "DotArchaius",
   "name": "DotArchaius",
-  "version": "1.0.0-*",
+  "version": "0.1.0-beta-*",
+
+  "packOptions": {
+    "licenseUrl": "https://github.com/marefr/dotarchaius/blob/master/LICENSE",
+    "projectUrl": "https://github.com/marefr/dotarchaius",
+  },
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
