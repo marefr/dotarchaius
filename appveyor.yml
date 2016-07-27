@@ -12,11 +12,8 @@ build_script:
 - build.cmd --quiet verify
 after_build:
 - ps: >-
-    Write-Host "After build started $env:APPVEYOR_BUILD_FOLDER"
-    If ((Test-Path (Join-Path $env:APPVEYOR_BUILD_FOLDER "test\DotArchaius.Tests\TestResult.xml"))) {
-      $wc = New-Object 'System.Net.WebClient'
-      $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path (Join-Path $env:APPVEYOR_BUILD_FOLDER "test\DotArchaius.Tests\TestResult.xml")))
-    }
+    $wc = New-Object 'System.Net.WebClient'
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\test\DotArchaius.Tests\TestResult.xml))
 test: off  
 artifacts:  
 - path: .\artifacts\build\*.nupkg
