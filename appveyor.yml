@@ -12,8 +12,9 @@ build_script:
 - build.cmd --quiet verify
 test_script:
 - ps: |
-    $testResultsFile = "$ENV:APPVEYOR_BUILD_FOLDER\test\DotArchaius.Tests\TestResult.xml"
-    (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
+    # Upload NUnit 3 test results to AppVeyor
+    $testResultFile = "$ENV:APPVEYOR_BUILD_FOLDER\test\DotArchaius.Tests\TestResults.xml"
+    (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultFile))
 artifacts:  
 - path: .\artifacts\build\*.nupkg
   name: NuGet
