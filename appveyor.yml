@@ -10,6 +10,9 @@ nuget:
 build_script:  
 - build.cmd --quiet verify
 test: off  
+artifacts:  
+- path: .\artifacts\build\*.nupkg
+  name: NuGet
 deploy:  
 - provider: NuGet
   server: https://www.myget.org/F/dotarchaius/api/v2
