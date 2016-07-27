@@ -1,13 +1,27 @@
 {
-  "copyright": "Copyright (C) 2016 DotArchaius",
-  "authors": [ "Marcus Efraimsson" ],
   "title": "DotArchaius",
-  "name": "DotArchaius",
+  "description": "DotArchaius is a .NET port of Netflix Java/Scala configuration management library Archaius.",
+  "copyright": "Copyright (C) 2016 DotArchaius",
   "version": "0.1.0-beta-*",
+  "authors": [ "Marcus Efraimsson" ],
 
   "packOptions": {
-    "licenseUrl": "https://github.com/marefr/dotarchaius/blob/master/LICENSE",
+    "summary": "DotArchaius is a .NET port of Netflix library Archaius.",
     "projectUrl": "https://github.com/marefr/dotarchaius",
+    "licenseUrl": "https://github.com/marefr/dotarchaius/blob/master/LICENSE",
+    "owners": ["mefraimsson"],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/marefr/dotarchaius"
+    },
+    "tags": [
+      "Configuration",
+      "Configuration Management" 
+    ]
+  },
+
+  "buildOptions": {
+    "debugType": "portable"
   },
 
   "dependencies": {
@@ -20,9 +34,5 @@
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
-  },
-
-  "buildOptions": {
-    "debugType": "portable"
   }
 }

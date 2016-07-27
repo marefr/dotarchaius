@@ -1,8 +1,4 @@
 ﻿{
-  "copyright": "Copyright (C) 2016 DotArchaius",
-  "authors": [ "Marcus Efraimsson" ],
-  "title": "DotArchaius Tests",
-  "name": "DotArchaius.Tests",
   "version": "0.1.0-beta-*",
   
   "buildOptions": {
