@@ -1,0 +1,39 @@
+version: '{build}'
+init:
+  - git config --global core.autocrlf true
+pull_requests:  
+  do_not_increment_build_number: true
+branches:  
+  only:
+  - master
+nuget:  
+  disable_publish_on_pr: true
+build_script:  
+- build.cmd --quiet verify
+test_script:
+- ps: |
+    # Upload NUnit 3 test results to AppVeyor
+
+    $testResultFile = "$ENV:APPVEYOR_BUILD_FOLDER\test\DotArchaius.Tests\TestResult.xml"
+
+    If (Test-Path $testResultFile) {
+      (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultFile))
+    }
+artifacts:  
+- path: .\artifacts\build\*.nupkg
+  name: NuGet
+deploy:  
+- provider: NuGet
+  server: https://www.myget.org/F/dotarchaius/api/v2
+  api_key:
+    secure: FQgUKHILgqqkAcoc4zXOB4Vhv1NtA1sJElMCA6Qh6MzbNRRek9vRq3+uu2fYJ0es
+  skip_symbols: true
+  on:
+    branch: master
+- provider: NuGet
+  name: production
+  api_key:
+    secure: pFeVv7wnE8BtfSFLmngGt88JDXKUCeNOWxqH/fQLwgtlIASV7RDSxI5LPyOgkV8N
+  on:
+    branch: master
+    appveyor_repo_tag: true
