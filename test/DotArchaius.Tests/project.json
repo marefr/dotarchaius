@@ -2,11 +2,12 @@
   "copyright": "Copyright (C) 2016 DotArchaius",
   "authors": [ "Marcus Efraimsson" ],
   "title": "DotArchaius Tests",
-  "name": "Dotarchaius.Tests",
+  "name": "DotArchaius.Tests",
   "version": "1.0.0-*",
   "buildOptions": {
     "preserveCompilationContext": true,
-    "warningsAsErrors": true
+    "warningsAsErrors": true,
+    "debugType": "portable"
   },
 
   "dependencies": {
